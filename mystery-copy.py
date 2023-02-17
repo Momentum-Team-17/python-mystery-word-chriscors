@@ -42,7 +42,7 @@ Current guess:
             if "_" not in current_guess:
                 print(f"YES! The word was {word}")
                 print()
-                if input("You win! Play again? (y/n):") == "y":
+                if input("You win! Play again? (y/n):") == y:
                     print()
                     play_game()
                 else:

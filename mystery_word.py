@@ -25,9 +25,16 @@ Current guess:
 
     while guesses_remaining > 0:
         guess = input("Take a guess! ").upper()
-        guesses.append(guess)
         print()
-        if guess in guesses:
+
+        if len(guess) > 1 or not guess.isalpha():
+            print(f'That guess is invalid.')
+            print(f'You have {guesses_remaining} guesses left.')
+            print()
+            print('Current guess:')
+            print(" ".join(current_guess))
+            print()
+        elif guess in guesses:
             print(f'You already guessed {guess}! Try again?')
             print(f'You have {guesses_remaining} guesses left.')
             print()
@@ -46,7 +53,7 @@ Current guess:
                     print()
                     play_game()
                 else:
-                    break
+                    return
             else:
                 print(f'Yes! {guess} was in the word {len(indexes)} time(s).')
                 print(f'You have {guesses_remaining} guesses left.')
@@ -62,13 +69,15 @@ Current guess:
             print('Current guess:')
             print(" ".join(current_guess))
             print()
+        guesses.append(guess)
+        print("-----------------")
     # If loss
     print(f"Good try! The word was {word}.")
-    if input("Play again? (y/n):") == y:
+    if input("Play again? (y/n):") == "y":
         print()
         play_game()
     else:
-        pass
+        return
 
 
 if __name__ == "__main__":

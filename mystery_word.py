@@ -1,12 +1,27 @@
 import numpy as np
 
 
-def select_word(word_list: list):
+def select_word(word_list: list) -> str:
+    """Selects a random word from word list arg
+
+    Args:
+        word_list (list): List of words
+
+    Returns:
+        str: Word from list
+    """
     import random
     return (random.choice(word_list))
 
 
-def play_game(word: str):
+def play_game(word_list: list):
+    """Plays hangman game
+
+    Args:
+        word_list (str): Secret word to be guessed
+    """
+    word = select_word(parsed_file).upper()
+
     # Declare vars
     secret_word = list(word)
     current_guess = ["_"] * len(word)
@@ -18,7 +33,7 @@ def play_game(word: str):
     # First tell user how many letters:
     print(f'''
 Welcome to Hangman!
-You secret word has {len(word)} letters.
+Your secret word has {len(word)} letters.
 
 Current guess:
 {" ".join(current_guess)}''')
@@ -88,6 +103,4 @@ if __name__ == "__main__":
 
     parsed_file = parsed_file.split('\n')
 
-    word = select_word(parsed_file)
-    print(word)
-    play_game(word.upper())
+    play_game(parsed_file)
